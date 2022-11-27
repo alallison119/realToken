@@ -24,8 +24,8 @@ contract ICO is AccessControl{
     uint256 SoldEFTT;
     uint256 ratioMetis =1;
     mapping(uint => uint) timeLocks;
-
-
+    bool private BURNED = false;
+    bool internal locked;
 
     constructor(address _eftt, address _dev) payable {
         //below might have to obfuscate with for loop
@@ -46,9 +46,21 @@ contract ICO is AccessControl{
         require(block.timestamp < timeLock,"ICO is over :( ");
         _;
     }
+    modifier _burnCheck(){
+        require(!BURNED,"the supply is already burned");
+        _;
+        BURNED = true;
+    }
     modifier _onlyOwner(){
         require(owner == msg.sender,"You're not the owner");
         _;
+    }
+    
+    modifier _noReentry() {
+        require(!locked, "No re-entrancy");
+        locked = true;
+        _;
+        locked = false;
     }
     
     receive() external payable {
@@ -84,11 +96,10 @@ contract ICO is AccessControl{
         
     }
 
-    function endICO() public _timeCheck onlyRole(BURNER_ROLE){
+    function endICO() public _timeCheck _burnCheck onlyRole(BURNER_ROLE){
         uint256 burnAmnt = (maxICO.sub(SoldEFTT));
         eftt.allowance( address(this),address(0));
         eftt.transfer(address(0),burnAmnt);
-        
     }
 
     function conversion(uint256 _amnt) private view returns(uint256){

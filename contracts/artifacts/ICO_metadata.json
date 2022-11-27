@@ -434,11 +434,11 @@
 			]
 		},
 		"contracts/ICO.sol": {
-			"keccak256": "0xab24cd35919e7bc8b82d9446ddd3d83b2213f1155fac35033e7a24d4a0bfc8c5",
+			"keccak256": "0x5025104d1058460d14d35ad17321a34e1944cd245059ec5b495e5891e40a9c6e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://288255ebc900a9fe897a6d03ed85854295845fdbb32a660cb7d1b35a73f9004b",
-				"dweb:/ipfs/QmU6ViDmpj1U96DHokZqbHte5phVisEMtLaktPTMd7k2UN"
+				"bzz-raw://379fed48d5bb92c118f78db849233c273347ef39f5bc3ef20c9ed5352bb06847",
+				"dweb:/ipfs/QmdzWCyQzFhBZRRg5PM3Hea6Wa8X8KEwp28avWdKcgJL91"
 			]
 		}
 	},
