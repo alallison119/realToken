@@ -61,6 +61,7 @@ contract ICO is AccessControl{
     function buy() public payable _timeCheck returns(bool){
         require(msg.value > 0,"them/they please send metis");
         uint256 buyAmount = conversion(msg.value);
+
         require(buyAmount + SoldEFTT < maxICO, "exceeds the total for sale");
         eftt.allowance( address(this),msg.sender);
         eftt.transfer(msg.sender, buyAmount);
@@ -71,23 +72,31 @@ contract ICO is AccessControl{
 
     function withdraw(uint256 _amnt) onlyRole(INVESTOR_ROLE) public {
         if (timeLocks[2]> block.timestamp){
-            payable(msg.sender).transfer(_amnt);
+            uint256 convertedAmnt =percentFromICO(_amnt);
+            payable(msg.sender).transfer(convertedAmnt);
         } else if (timeLocks[1]> block.timestamp){
-            //uint256 converted = soldPercent();
-            payable(msg.sender).transfer(_amnt);
+            uint256 convertedAmnt =percentFromICO(_amnt);
+            payable(msg.sender).transfer(convertedAmnt);
         } else if (timeLocks[0]> block.timestamp){
-            payable(msg.sender).transfer(_amnt);
+            uint256 convertedAmnt =percentFromICO(_amnt);
+            payable(msg.sender).transfer(convertedAmnt);
         }
         
     }
 
     function endICO() public _timeCheck onlyRole(BURNER_ROLE){
+        uint256 burnAmnt = (maxICO.sub(SoldEFTT));
+        eftt.allowance( address(this),address(0));
+        eftt.transfer(address(0),burnAmnt);
         
-
     }
 
     function conversion(uint256 _amnt) private view returns(uint256){
         return(_amnt.mul(ratioMetis));
+    }
+
+    function percentFromICO(uint256 _amnt) private view returns(uint256){
+        return _amnt.mul(soldPercent());
     }
 
     function soldPercent() private view returns(uint256){
