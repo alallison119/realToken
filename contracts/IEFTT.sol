@@ -6,7 +6,7 @@ pragma solidity ^0.8.0;
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
  */
-interface IERC20 {
+interface IEFTT {
     /**
      * @dev Emitted when `value` tokens are moved from one account (`from`) to
      * another (`to`).
@@ -80,4 +80,5 @@ interface IERC20 {
         uint256 amount
     ) external returns (bool);
 
+    function burn(uint256 amount) external;
 }

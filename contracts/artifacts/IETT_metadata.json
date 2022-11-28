@@ -123,6 +123,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "totalSupply",
 				"outputs": [
@@ -230,7 +243,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			".deps/npm/@openzeppelin/contracts/token/ERC20/IERC20.sol": "IERC20"
+			"contracts/IEFTT.sol": "IETT"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -244,12 +257,12 @@
 		"remappings": []
 	},
 	"sources": {
-		".deps/npm/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-			"keccak256": "0x5ba913971094657f08bc31e8c2244a193c5117b40a13f76f4da0f1be7fae8ff9",
+		"contracts/IEFTT.sol": {
+			"keccak256": "0x6e971247c4d5769c15d76942043346c709cf9e071842b6ab9e16cdaf8696ce81",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e3992c068dfc7286dddffb6865e004b834b92fc4ff604c70459684479c1394ec",
-				"dweb:/ipfs/QmV673kQefsXYk1BLmcWSf4WWBtSiYymzpYsBubrB5xY6X"
+				"bzz-raw://eab06d12e07652d04b65ef515e0c8e9fdaecf11a74e6975192591049b5185c38",
+				"dweb:/ipfs/QmRXJ55uPYWakRwtG5Dj1Yut5E3fxiuyubu17R5cSnQ1e5"
 			]
 		}
 	},
