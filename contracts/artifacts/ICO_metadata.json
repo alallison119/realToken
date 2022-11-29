@@ -26,6 +26,19 @@
 				"inputs": [
 					{
 						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "Burned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
 						"internalType": "string",
 						"name": "func",
 						"type": "string"
@@ -452,11 +465,11 @@
 			]
 		},
 		"contracts/ICO.sol": {
-			"keccak256": "0xc63820e42ee9e966d9b6a71d68960e982aed27793977cdbfee7520d40ef64d28",
+			"keccak256": "0x0d64c4ecb205b51508008a2b0c72819fcd11f006bb541e010d010255719e3d76",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://476c537e434f19a98e13fd90aaa64bcb908f1f4def19d52caa06b89ce3586347",
-				"dweb:/ipfs/QmStmisepQiGoyeHBDfhJPzqgSgc1wwHwiLDnaxoWqYyxL"
+				"bzz-raw://89cdef0d955efc4f2365668175e8d988c7023cbfcf3864a429ef735be610927b",
+				"dweb:/ipfs/QmNkfPbRZrb3SyCMytM8JN8JXCfGmiLzwGFXJYBi22fekR"
 			]
 		},
 		"contracts/IEFTT.sol": {

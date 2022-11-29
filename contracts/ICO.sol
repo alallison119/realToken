@@ -13,8 +13,8 @@ contract ICO is AccessControl{
     bytes32 public constant EXTEND_ICO_ROLE = keccak256("EXTEND_ICO_ROLE");
 
     address payable owner;
-    address payable private devAddress;
-    address constant burnAddres =0x000000000000000000000000000000000000dEaD;
+    //address payable private devAddress;
+    //address constant burnAddres =0x000000000000000000000000000000000000dEaD;
     address[] minters_;
     uint256 maxSupply_;
     uint256 timeLock=18000000000;
@@ -49,6 +49,7 @@ contract ICO is AccessControl{
 
     event Log(string func);
     event Sold(uint);
+    event Burned(uint);
  
     modifier _timeCheck(){
         require(block.timestamp < timeLock,"ICO is over :( ");
@@ -110,8 +111,7 @@ contract ICO is AccessControl{
     function endICO() public _timeCheck onlyRole(BURNER_ROLE) _burnCheck{
         uint256 burnAmnt = (maxICO.sub(SoldEFTT));
         eftt.burn(burnAmnt);
-        // eftt.allowance( address(this), payable(burnAddres));
-        // eftt.transfer(payable(burnAddres),burnAmnt);
+        emit Burned(burnAmnt);
     }
 
     function conversion(uint256 _amnt) private view returns(uint256){
