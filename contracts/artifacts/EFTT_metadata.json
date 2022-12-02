@@ -1075,11 +1075,11 @@
 			]
 		},
 		"contracts/EFTT.sol": {
-			"keccak256": "0x44eb507293e4a7e2b8b8f62b8b4124255f504202de5773491d098aa0bf0b9c9a",
+			"keccak256": "0xa69c42a8399cf95ac4f3c9147475a517a49b96396278951bd6be7782923f190c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://73639eb561338d7f94a448c082f3158fe919aaa828b9952f1e8cc082fddca488",
-				"dweb:/ipfs/QmZxTgcxmspnx583A8aokjhC1E6KGvv1avCDnAeb3UGV1y"
+				"bzz-raw://d358a2bdb95dcb152472d3e3119dd97660c90aa086a72ae5f08d63ef1b55e8a1",
+				"dweb:/ipfs/QmXSVPFL3n2YWQrKhYNtxQCPoPnR3DzUFFXgPuLh1k5Qyd"
 			]
 		}
 	},

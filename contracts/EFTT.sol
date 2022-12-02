@@ -90,4 +90,9 @@ contract EFTT is ERC20, ERC20Burnable, Ownable, AccessControl {
     function getHandle(address _addres)public view returns(bytes32){
         return(handle[_addres].handleID);
     }
+
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override { 
+        //require (, "The contract has not yet become operational");
+        super._beforeTokenTransfer(from, to, amount);
+    }
 }

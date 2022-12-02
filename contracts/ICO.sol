@@ -5,6 +5,7 @@ import ".deps/npm/@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./IEFTT.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Router02.sol";
 
 contract ICO is AccessControl{
     using SafeMath for uint256;
@@ -128,16 +129,16 @@ contract ICO is AccessControl{
         IERC20(METISADDRESS).approve(address(this),metisLiquidity);
         eftt.approve(address(this), efttLiquidity);
         //below must also burn the liquidity tokens
-        //  (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
-        //     address(this),
-        //     WETH,
-        //     amountADesired,
-        //     10,
-        //     0, // slippage is unavoidable
-        //     0, // slippage is unavoidable
-        //     address(this),
-        //     block.timestamp + 360
-        // );
+         (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
+            address(this),
+            WETH,
+            amountADesired,
+            10,
+            0, // slippage is unavoidable
+            0, // slippage is unavoidable
+            address(this),
+            block.timestamp + 360
+        );
 
     }
 
