@@ -5,7 +5,8 @@ import ".deps/npm/@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./IEFTT.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Router02.sol";
+
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract EthMadness is Ownable {
     
@@ -118,7 +119,7 @@ contract EthMadness is Ownable {
     );
 
     // Constructs a new instance of the EthMadness contract with the given transition times
-    constructor(uint[] memory times, address erc20Token, uint erc20Amount) public {
+    constructor(uint[] memory times, address erc20Token, uint erc20Amount)  {
         
         // Initialize the oracles array with the sender's address
         oracles = [msg.sender];
@@ -161,7 +162,7 @@ contract EthMadness is Ownable {
     // Internal function for advancing the state of the bracket
     function advanceState(ContestState nextState) private {
         require(uint(nextState) == uint(currentState) + 1, "Can only advance state by 1");
-        require(now > transitionTimes[uint(nextState)], "Transition time hasn't happened yet");
+        require(block.timestamp > transitionTimes[uint(nextState)], "Transition time hasn't happened yet");
         
         currentState = nextState;
     }
@@ -347,7 +348,7 @@ contract EthMadness is Ownable {
     // Sets the bit at index n to 0 in a
     function clearBit16(bytes16 a, uint16 n) private pure returns (bytes16) {
         uint128 mask = uint128(2) ** n;
-        mask = mask ^ uint128(-1);
+        //mask = mask ^ uint128(-1);
         return a & bytes16(mask);
     }
     
